@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>cp3_650703</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-03-03"><meta name="DC.source" content="cp3_650703.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">MCEN 3030 PROJECT3</a></li><li><a href="#3">Problem 1</a></li><li><a href="#4">Problem 2</a></li><li><a href="#5">Problem 3</a></li></ul></div><pre class="codeinput"><span class="comment">%HANWEN ZHAO</span>
+<span class="comment">%MEID:650-703</span>
+</pre><h2>MCEN 3030 PROJECT3<a name="2"></a></h2><pre class="codeinput">clc
+close <span class="string">all</span>
+clear <span class="string">all</span>
+<span class="comment">%NEWTON'S LAW OF COOLING</span>
+data = load(<span class="string">'cooling.txt'</span>); <span class="comment">% load data from txt file</span>
+T = [data(:,2); data(:,3); data(:,4); data(:,5)]; <span class="comment">% rearrange data</span>
+t = [data(:,1); data(:,1); data(:,1); data(:,1)]; <span class="comment">% create a single corresponding time vector</span>
+plot(t,T,<span class="string">'*'</span>,<span class="string">'markersize'</span>,1); <span class="comment">% plot tghe data points</span>
+xlabel(<span class="string">'Time s'</span>)
+ylabel(<span class="string">'Temperature C'</span>)
+title(<span class="string">'Temperature vs. Time'</span>)
+hold <span class="string">on</span>
+height = 0.16; <span class="comment">% the height of glass</span>
+width = 0.07; <span class="comment">% the width of the glass</span>
+A = pi * (width/2)^2; <span class="comment">% calcultate the surface area</span>
+vol = A * height; <span class="comment">% calculte the volume of the glass</span>
+rho = 1000; <span class="comment">% water density kg/m^3</span>
+c = 4186; <span class="comment">% water heat capacity kj/kg*celsius</span>
+m = rho * vol; <span class="comment">% calculate the mass of water</span>
+</pre><img vspace="5" hspace="5" src="cp3_650703_01.png" alt=""> <h2>Problem 1<a name="3"></a></h2><p>The equation from heat transfer qdot = -h*A*(T-T0) qdot = m*c(dT/dt) rewrite the eqn and take integral ln(T-T0) = -tau*t+C tau = (h*A/m*c) linearize the eqn Y = a1*x + a0 a0 = log(T-TO); a1 = -tau = -(h*A)/(m*c);</p><pre class="codeinput">syms <span class="string">h</span> <span class="string">T0</span>
+Ti = 26.5; <span class="comment">% temperature of surrounding</span>
+X = t; <span class="comment">% set up the linear eqn</span>
+Y = log(T-Ti);
+nx = length(X);
+ny = length(Y);
+Sx = sum(X); <span class="comment">% linear lease-squares regression</span>
+Sy = sum(Y);
+Sxy = sum(X.*Y);
+Sxx = sum(X.^2);
+a1 = (nx*Sxy-Sx*Sy)/(nx*Sxx-Sx^2); <span class="comment">% calculate a1</span>
+a0 = (Sxx*Sy-Sxy*Sx)/(nx*Sxx-Sx^2); <span class="comment">% calculate a0</span>
+h = double(vpasolve(a1 == -((h*A)/(m*c)), h)); <span class="comment">% calculate the value of h</span>
+T0 = double(vpasolve(a0 == log(T0 - Ti),T0)); <span class="comment">% calculate the initial temperature</span>
+fprintf(<span class="string">'The coefficients of linear equation are a1 = %4.6f, a0 = %4.6f.\n'</span>,a1,a0)
+fprintf(<span class="string">'The calculated coefficient h is %4.6f, the initial temperature T0 is %4.6f.\n'</span>,h,T0)
+</pre><pre class="codeoutput">The coefficients of linear equation are a1 = -0.000329, a0 = 4.057925.
+The calculated coefficient h is 220.120559, the initial temperature T0 is 84.354136.
+</pre><h2>Problem 2<a name="4"></a></h2><p>rewrite our equation</p><pre class="codeinput">t2 = 1:5*60*60; <span class="comment">% time for 5 hours</span>
+tau = (h*A)/(m*c); <span class="comment">% calculate tau</span>
+T2 = exp(-tau*t2+a0)+Ti; <span class="comment">% calculate temp regreting to the eqn we have</span>
+plot(t2,T2) <span class="comment">% plot data</span>
+t3 = 10000;
+T3 = double(exp(-tau*t3+a0)+Ti); <span class="comment">% calculate temp at t = 10000s</span>
+fprintf(<span class="string">'The estimate temperature at 10000s is %4.6f.\n'</span>,T3)
+</pre><pre class="codeoutput">The estimate temperature at 10000s is 28.662719.
+</pre><img vspace="5" hspace="5" src="cp3_650703_02.png" alt=""> <h2>Problem 3<a name="5"></a></h2><pre class="codeinput">t4 = t(1:25); <span class="comment">% obtain first 25 data</span>
+T4 = (T(1:25))';
+Xint = 1.5; <span class="comment">% the time to be interpolated</span>
+n = length(t4);
+<span class="keyword">for</span> i = 1:n <span class="comment">% calculte the product terms Li</span>
+    L(i) = 1;
+    <span class="keyword">for</span> j = 1:n
+        <span class="keyword">if</span> j ~= i
+            L(i) = L(i)*(Xint-t4(j))/(t4(i)-t4(j));
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+lagrange = double(sum(T4.*L)); <span class="comment">% calculate the temp via Lagrange interpolating ploynomial</span>
+fprintf(<span class="string">'The predict temperature at t=1.5s via Lagrange interpolating polynomial is %4.6f.\n'</span>,lagrange)
+fprintf(<span class="string">'The prediction is not working because the temperate at t=1 is 89.5, at t=2 is 90.4.\n'</span>)
+fprintf(<span class="string">'The main reason of the method failure is that we have very noisy data at first 25 data points.\n'</span>)
+fprintf(<span class="string">'The polynomial is trying to fit all the nosiy data at interger time instant, thus it gave us a extreme high value at t=1.5s.\n'</span>)
+fprintf(<span class="string">'However the Nwtons polynimial will give us the similar high value due to the same reason.\n'</span>)
+fprintf(<span class="string">'The linear spline interpolation should give us a reasonable value since it only use two points to calculate.\n'</span>)
+</pre><pre class="codeoutput">The predict temperature at t=1.5s via Lagrange interpolating polynomial is 1645.459011.
+The prediction is not working because the temperate at t=1 is 89.5, at t=2 is 90.4.
+The main reason of the method failure is that we have very noisy data at first 25 data points.
+The polynomial is trying to fit all the nosiy data at interger time instant, thus it gave us a extreme high value at t=1.5s.
+However the Nwtons polynimial will give us the similar high value due to the same reason.
+The linear spline interpolation should give us a reasonable value since it only use two points to calculate.
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%HANWEN ZHAO
+%MEID:650-703
+%% MCEN 3030 PROJECT3
+clc
+close all
+clear all
+%NEWTON'S LAW OF COOLING
+data = load('cooling.txt'); % load data from txt file
+T = [data(:,2); data(:,3); data(:,4); data(:,5)]; % rearrange data
+t = [data(:,1); data(:,1); data(:,1); data(:,1)]; % create a single corresponding time vector
+plot(t,T,'*','markersize',1); % plot tghe data points
+xlabel('Time s')
+ylabel('Temperature C')
+title('Temperature vs. Time')
+hold on
+height = 0.16; % the height of glass
+width = 0.07; % the width of the glass
+A = pi * (width/2)^2; % calcultate the surface area
+vol = A * height; % calculte the volume of the glass
+rho = 1000; % water density kg/m^3
+c = 4186; % water heat capacity kj/kg*celsius
+m = rho * vol; % calculate the mass of water
+%% Problem 1
+% The equation from heat transfer
+% qdot = -h*A*(T-T0)
+% qdot = m*c(dT/dt)
+% rewrite the eqn and take integral
+% ln(T-T0) = -tau*t+C
+% tau = (h*A/m*c)
+% linearize the eqn
+% Y = a1*x + a0
+% a0 = log(T-TO);
+% a1 = -tau = -(h*A)/(m*c);
+syms h T0
+Ti = 26.5; % temperature of surrounding
+X = t; % set up the linear eqn
+Y = log(T-Ti); 
+nx = length(X);
+ny = length(Y);
+Sx = sum(X); % linear lease-squares regression 
+Sy = sum(Y);
+Sxy = sum(X.*Y);
+Sxx = sum(X.^2);
+a1 = (nx*Sxy-Sx*Sy)/(nx*Sxx-Sx^2); % calculate a1
+a0 = (Sxx*Sy-Sxy*Sx)/(nx*Sxx-Sx^2); % calculate a0
+h = double(vpasolve(a1 == -((h*A)/(m*c)), h)); % calculate the value of h
+T0 = double(vpasolve(a0 == log(T0 - Ti),T0)); % calculate the initial temperature
+fprintf('The coefficients of linear equation are a1 = %4.6f, a0 = %4.6f.\n',a1,a0)
+fprintf('The calculated coefficient h is %4.6f, the initial temperature T0 is %4.6f.\n',h,T0)
+%% Problem 2
+% rewrite our equation
+t2 = 1:5*60*60; % time for 5 hours
+tau = (h*A)/(m*c); % calculate tau
+T2 = exp(-tau*t2+a0)+Ti; % calculate temp regreting to the eqn we have
+plot(t2,T2) % plot data
+t3 = 10000;
+T3 = double(exp(-tau*t3+a0)+Ti); % calculate temp at t = 10000s
+fprintf('The estimate temperature at 10000s is %4.6f.\n',T3)
+%% Problem 3
+t4 = t(1:25); % obtain first 25 data
+T4 = (T(1:25))';
+Xint = 1.5; % the time to be interpolated
+n = length(t4);
+for i = 1:n % calculte the product terms Li
+    L(i) = 1;
+    for j = 1:n
+        if j ~= i
+            L(i) = L(i)*(Xint-t4(j))/(t4(i)-t4(j));
+        end
+    end
+end
+lagrange = double(sum(T4.*L)); % calculate the temp via Lagrange interpolating ploynomial
+fprintf('The predict temperature at t=1.5s via Lagrange interpolating polynomial is %4.6f.\n',lagrange)
+fprintf('The prediction is not working because the temperate at t=1 is 89.5, at t=2 is 90.4.\n')
+fprintf('The main reason of the method failure is that we have very noisy data at first 25 data points.\n')
+fprintf('The polynomial is trying to fit all the nosiy data at interger time instant, thus it gave us a extreme high value at t=1.5s.\n')
+fprintf('However the Nwtons polynimial will give us the similar high value due to the same reason.\n')
+fprintf('The linear spline interpolation should give us a reasonable value since it only use two points to calculate.\n')
+
+##### SOURCE END #####
+--></body></html>

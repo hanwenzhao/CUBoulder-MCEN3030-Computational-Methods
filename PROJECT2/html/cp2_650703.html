@@ -1,0 +1,291 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>cp2_650703</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-02-11"><meta name="DC.source" content="cp2_650703.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Main function</a></li><li><a href="#2">Problem #1</a></li><li><a href="#3">Problem #2</a></li><li><a href="#4">Problem #3</a></li><li><a href="#5">Problem #4</a></li></ul></div><h2>Main function<a name="1"></a></h2><pre class="codeinput"><span class="keyword">function</span> [] = cp2_650703()
+clear <span class="string">All</span>
+clc
+<span class="comment">%a</span>
+fprintf(<span class="string">'Problem a \n'</span>) <span class="comment">% solve problem a</span>
+n = 5;
+m = 10^2;
+kmax = 10;
+mainFun(n,m,kmax)
+<span class="comment">%b</span>
+fprintf(<span class="string">'Problem b \n'</span>) <span class="comment">% solve problem b</span>
+n = 5;
+m = 10^2;
+kmax = 50;
+mainFun(n,m,kmax)
+<span class="comment">%c</span>
+fprintf(<span class="string">'Problem c \n'</span>) <span class="comment">% solve problem c</span>
+n = 5;
+m = 10^6;
+kmax = 50;
+mainFun(n,m,kmax)
+<span class="comment">%d</span>
+fprintf(<span class="string">'Problem d \n'</span>) <span class="comment">% solve problem d</span>
+n = 20;
+m = 1;
+kmax = 10;
+mainFun(n,m,kmax)
+<span class="comment">%e</span>
+fprintf(<span class="string">'Problem e \n'</span>) <span class="comment">% solve problem e</span>
+n = 20;
+m = 0;
+kmax =50;
+mainFun(n,m,kmax)
+<span class="keyword">end</span>
+</pre><h2>Problem #1<a name="2"></a></h2><pre class="codeinput"><span class="keyword">function</span> [A,b] = buildMatrix(n,m) <span class="comment">% build matrix function</span>
+A = magic(n) + eye(n) * m; <span class="comment">% build A</span>
+<span class="keyword">for</span> i = 1:n <span class="comment">% build b</span>
+    b(i) = 1/i;
+<span class="keyword">end</span>
+b = b';
+<span class="keyword">end</span>
+</pre><h2>Problem #2<a name="3"></a></h2><pre class="codeinput"><span class="keyword">function</span> [x] = status(A)
+x = -999; <span class="comment">% return -999 if matrix is not well conditioned and diagonally dominant</span>
+syms <span class="string">diaDom</span> <span class="comment">% varible to record diagonally dominant or not</span>
+n = length(A);
+<span class="keyword">for</span> i = 1:n
+        B = abs(A(i,:)); <span class="comment">% B is single row of A</span>
+        <span class="keyword">if</span> abs(A(i,i)) &gt; sum(B) - abs(A(i,i)) <span class="comment">% determine A is diagonally dominant or not</span>
+            fprintf(<span class="string">'Diagonally dominant. \n'</span>)
+            diaDom = 1;
+            <span class="keyword">break</span>
+        <span class="keyword">else</span>
+            diaDom = 0;
+        <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> cond(A) &lt; 10^16 <span class="comment">% if condition number is less than O(10^15)</span>
+    fprintf(<span class="string">'Well conditioned. \n'</span>)
+<span class="keyword">end</span>
+<span class="keyword">if</span> diaDom == 1 &amp;&amp; cond(A) &lt; 10^15 <span class="comment">% if A is diagonally dominant and the condition number is less than O(10^15)</span>
+    x = 0; <span class="comment">% set status varible to 0</span>
+    fprintf(<span class="string">'The status varible is 0. \n'</span>)
+<span class="keyword">end</span>
+<span class="keyword">if</span> diaDom == 0
+    fprintf(<span class="string">'Not Diagonally dominant. \n'</span>)
+    x = -1;
+<span class="keyword">end</span>
+<span class="keyword">if</span> cond(A) &gt;= 10^16 <span class="comment">% if the condition number is greater than O(10^15)</span>
+    fprintf(<span class="string">'Ill-conditioned. \n'</span>) <span class="comment">% matrix is ill conditioned, set x to -1</span>
+    x = -2;
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><h2>Problem #3<a name="4"></a></h2><pre class="codeinput"><span class="keyword">function</span> [x] = solveJacobi(A,b,kmax) <span class="comment">% use jocobi iterative method</span>
+eps = 10^-10; <span class="comment">% relative error tolerance</span>
+converged = 0; <span class="comment">% record the solution converged or not</span>
+n = length(b);
+p = zeros(n,1); <span class="comment">% assume all initial value to zero</span>
+<span class="keyword">for</span> k = 1:kmax
+    <span class="keyword">for</span> i = 1:n
+        x(i) = (b(i) - A(i,[1:i-1,i+1:n])*p([1:i-1,i+1:n]))/A(i,i); <span class="comment">% estimate the solution</span>
+    <span class="keyword">end</span>
+    err = abs(norm(x'-p)/norm(p)); <span class="comment">% calculate error</span>
+    fprintf(<span class="string">'The relative error is %d \n'</span>,err)
+    <span class="keyword">if</span> err &lt; eps <span class="comment">% if error less than tolerance, stop iternation</span>
+        fprintf(<span class="string">'The total estimated error is less than a relative error tolerance. \n'</span>)
+        converged = 1; <span class="comment">% the solution cinverge</span>
+        <span class="keyword">break</span>
+    <span class="keyword">end</span>
+    p = x'; <span class="comment">% transpose the matrix</span>
+<span class="keyword">end</span>
+x = x';
+<span class="keyword">if</span> converged == 0 <span class="comment">% if the solution did not converge, set x to -999</span>
+    fprintf(<span class="string">'The system did not converge before %d iterations are performed. \n'</span>, kmax)
+    x = -999;
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><h2>Problem #4<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> [x] = mainFun(n,m,kmax) <span class="comment">% main function</span>
+[A,b] = buildMatrix(n,m); <span class="comment">% call function to build matrix</span>
+statusVarible = status(A); <span class="comment">% calculate the status varible</span>
+<span class="keyword">if</span> statusVarible == 0 <span class="comment">% if matrix is diagonally dominant and the well condition</span>
+    x = solveJacobi(A,b,kmax); <span class="comment">% solve x by using jacobi method</span>
+<span class="keyword">else</span>
+    x = -999;
+<span class="keyword">end</span>
+
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Main function
+function [] = cp2_650703()
+clear All
+clc
+%a
+fprintf('Problem a \n') % solve problem a
+n = 5;
+m = 10^2;
+kmax = 10;
+mainFun(n,m,kmax)
+%b
+fprintf('Problem b \n') % solve problem b
+n = 5;
+m = 10^2;
+kmax = 50;
+mainFun(n,m,kmax)
+%c
+fprintf('Problem c \n') % solve problem c
+n = 5;
+m = 10^6;
+kmax = 50;
+mainFun(n,m,kmax)
+%d
+fprintf('Problem d \n') % solve problem d
+n = 20;
+m = 1;
+kmax = 10;
+mainFun(n,m,kmax)
+%e
+fprintf('Problem e \n') % solve problem e
+n = 20;
+m = 0;
+kmax =50;
+mainFun(n,m,kmax)
+end
+%% Problem #1
+function [A,b] = buildMatrix(n,m) % build matrix function
+A = magic(n) + eye(n) * m; % build A
+for i = 1:n % build b
+    b(i) = 1/i;
+end
+b = b';
+end
+%% Problem #2
+function [x] = status(A)
+x = -999; % return -999 if matrix is not well conditioned and diagonally dominant
+syms diaDom % varible to record diagonally dominant or not
+n = length(A); 
+for i = 1:n
+        B = abs(A(i,:)); % B is single row of A
+        if abs(A(i,i)) > sum(B) - abs(A(i,i)) % determine A is diagonally dominant or not
+            fprintf('Diagonally dominant. \n')
+            diaDom = 1;
+            break
+        else
+            diaDom = 0;
+        end
+end
+
+if cond(A) < 10^16 % if condition number is less than O(10^15)
+    fprintf('Well conditioned. \n')
+end
+if diaDom == 1 && cond(A) < 10^15 % if A is diagonally dominant and the condition number is less than O(10^15)
+    x = 0; % set status varible to 0
+    fprintf('The status varible is 0. \n')
+end
+if diaDom == 0
+    fprintf('Not Diagonally dominant. \n')
+    x = -1;
+end
+if cond(A) >= 10^16 % if the condition number is greater than O(10^15)
+    fprintf('Ill-conditioned. \n') % matrix is ill conditioned, set x to -1
+    x = -2;
+end
+end
+%% Problem #3
+function [x] = solveJacobi(A,b,kmax) % use jocobi iterative method
+eps = 10^-10; % relative error tolerance
+converged = 0; % record the solution converged or not
+n = length(b);
+p = zeros(n,1); % assume all initial value to zero
+for k = 1:kmax
+    for i = 1:n
+        x(i) = (b(i) - A(i,[1:i-1,i+1:n])*p([1:i-1,i+1:n]))/A(i,i); % estimate the solution
+    end
+    err = abs(norm(x'-p)/norm(p)); % calculate error
+    fprintf('The relative error is %d \n',err)
+    if err < eps % if error less than tolerance, stop iternation
+        fprintf('The total estimated error is less than a relative error tolerance. \n')
+        converged = 1; % the solution cinverge
+        break
+    end
+    p = x'; % transpose the matrix
+end
+x = x';
+if converged == 0 % if the solution did not converge, set x to -999
+    fprintf('The system did not converge before %d iterations are performed. \n', kmax)
+    x = -999;
+end
+end
+%% Problem #4
+function [x] = mainFun(n,m,kmax) % main function
+[A,b] = buildMatrix(n,m); % call function to build matrix
+statusVarible = status(A); % calculate the status varible
+if statusVarible == 0 % if matrix is diagonally dominant and the well condition
+    x = solveJacobi(A,b,kmax); % solve x by using jacobi method
+else
+    x = -999;
+end
+
+end
+
+
+##### SOURCE END #####
+--></body></html>
